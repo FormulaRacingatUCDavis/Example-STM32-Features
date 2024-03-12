@@ -131,11 +131,10 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-	HAL_CAN_AddTxMessage(&hcan1, &TxHeader, TxData, &TxMailbox);
-	if (HAL_CAN_AddTxMessage(&hcan1, &TxHeader, TxData, &TxMailbox) != HAL_OK)
-	{
-	  Error_Handler();
-	}
+    if (HAL_CAN_AddTxMessage(&hcan1, &TxHeader, TxData, &TxMailbox) != HAL_OK)
+    {
+	Error_Handler();
+    }
 
 	HAL_Delay(1000);
   }
