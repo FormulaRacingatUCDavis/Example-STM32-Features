@@ -72,7 +72,7 @@ uint8_t               RxData[8];
 
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 {
-	HAL_CAN_GetRxMessage(&hcan1, TxMailbox, &RxHeader, RxData);
+	HAL_CAN_GetRxMessage(&hcan1, CAN_RX_FIFO0, &RxHeader, RxData);
 	HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_1);
 //	print(RxData[0]);
 }
@@ -322,8 +322,7 @@ void Error_Handler(void)
   __disable_irq();
   while (1)
   {
-	  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
-	  HAL_Delay(1000);
+	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, 1);
   }
   /* USER CODE END Error_Handler_Debug */
 }
