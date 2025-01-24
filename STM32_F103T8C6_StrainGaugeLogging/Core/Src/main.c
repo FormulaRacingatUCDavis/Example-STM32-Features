@@ -199,6 +199,7 @@ int main(void)
 
   /* Configure the system clock */
   SystemClock_Config();
+
   /* USER CODE BEGIN SysInit */
 
   /* USER CODE END SysInit */
@@ -209,8 +210,6 @@ int main(void)
   MX_SPI1_Init();
   MX_FATFS_Init();
   MX_ADC1_Init();
-  HAL_ADC_Start(&hadc1);
-
   /* USER CODE BEGIN 2 */
 
   // Start CAN
@@ -276,7 +275,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
   {
@@ -353,11 +352,11 @@ static void MX_CAN_Init(void)
 
   /* USER CODE END CAN_Init 1 */
   hcan.Instance = CAN1;
-  hcan.Init.Prescaler = 18;
+  hcan.Init.Prescaler = 4;
   hcan.Init.Mode = CAN_MODE_NORMAL;
   hcan.Init.SyncJumpWidth = CAN_SJW_1TQ;
-  hcan.Init.TimeSeg1 = CAN_BS1_2TQ;
-  hcan.Init.TimeSeg2 = CAN_BS2_2TQ;
+  hcan.Init.TimeSeg1 = CAN_BS1_13TQ;
+  hcan.Init.TimeSeg2 = CAN_BS2_4TQ;
   hcan.Init.TimeTriggeredMode = DISABLE;
   hcan.Init.AutoBusOff = DISABLE;
   hcan.Init.AutoWakeUp = DISABLE;
