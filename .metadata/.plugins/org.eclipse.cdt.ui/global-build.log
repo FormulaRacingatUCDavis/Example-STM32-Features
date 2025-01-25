@@ -1,0 +1,61 @@
+11:20:55 **** Incremental Build of configuration Debug for project STM32_F103T8C6_StrainGaugeLogging ****
+make -j7 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:84:15: warning: unsigned conversion from 'int' to 'uint8_t' {aka 'unsigned char'} changes value from '291' to '35' [-Woverflow]
+   84 | uint8_t SID = 0x123;
+      |               ^~~~~
+../Core/Src/main.c: In function 'Write_To_SD':
+../Core/Src/main.c:100:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  100 |           sprintf(buffer, "123,%.2f,%.2f,%.2f,%lu\n", data0, data1, data2, time);
+      |           ^~~~~~~
+../Core/Src/main.c:22:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   21 | #include "fatfs.h"
+  +++ |+#include <stdio.h>
+   22 | 
+../Core/Src/main.c:100:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  100 |           sprintf(buffer, "123,%.2f,%.2f,%.2f,%lu\n", data0, data1, data2, time);
+      |           ^~~~~~~
+../Core/Src/main.c:100:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c: In function 'Transmit_Data':
+../Core/Src/main.c:151:10: warning: implicit declaration of function 'memcpy' [-Wimplicit-function-declaration]
+  151 |          memcpy(&TxData0[0], &data_0, 2);   // Bytes 0-1: Time low
+      |          ^~~~~~
+../Core/Src/main.c:22:1: note: include '<string.h>' or provide a declaration of 'memcpy'
+   21 | #include "fatfs.h"
+  +++ |+#include <string.h>
+   22 | 
+../Core/Src/main.c:151:10: warning: incompatible implicit declaration of built-in function 'memcpy' [-Wbuiltin-declaration-mismatch]
+  151 |          memcpy(&TxData0[0], &data_0, 2);   // Bytes 0-1: Time low
+      |          ^~~~~~
+../Core/Src/main.c:151:10: note: include '<string.h>' or provide a declaration of 'memcpy'
+../Core/Src/main.c:160:18: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  160 |                  printf("Can Transmission Failed (frame 1, SID: 0x123\n)");
+      |                  ^~~~~~
+../Core/Src/main.c:160:18: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/main.c:160:18: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:160:18: note: include '<stdio.h>' or provide a declaration of 'printf'
+arm-none-eabi-gcc -o "STM32_F103T8C6_StrainGaugeLogging.elf" @"objects.list"   -mcpu=cortex-m3 -T"/Users/hxn8637/Documents/GitHub/Example-STM32-Features/STM32_F103T8C6_StrainGaugeLogging/STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_F103T8C6_StrainGaugeLogging.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_F103T8C6_StrainGaugeLogging.elf
+ 
+arm-none-eabi-size  STM32_F103T8C6_StrainGaugeLogging.elf 
+arm-none-eabi-objdump -h -S STM32_F103T8C6_StrainGaugeLogging.elf  > "STM32_F103T8C6_StrainGaugeLogging.list"
+   text	   data	    bss	    dec	    hex	filename
+  50724	    492	  10996	  62212	   f304	STM32_F103T8C6_StrainGaugeLogging.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32_F103T8C6_StrainGaugeLogging.list
+ 
+11:21:20 **** Incremental Build of configuration Debug for project STM32_F103T8C6_StrainGaugeLogging ****
+make -j7 all 
+arm-none-eabi-size  STM32_F103T8C6_StrainGaugeLogging.elf 
+   text	   data	    bss	    dec	    hex	filename
+  50724	    492	  10996	  62212	   f304	STM32_F103T8C6_StrainGaugeLogging.elf
+Finished building: default.size.stdout
+ 
+11:22:39 **** Incremental Build of configuration Debug for project STM32_F103T8C6_StrainGaugeLogging ****
+make -j7 all 
+arm-none-eabi-size  STM32_F103T8C6_StrainGaugeLogging.elf 
+   text	   data	    bss	    dec	    hex	filename
+  50724	    492	  10996	  62212	   f304	STM32_F103T8C6_StrainGaugeLogging.elf
+Finished building: default.size.stdout
+ 

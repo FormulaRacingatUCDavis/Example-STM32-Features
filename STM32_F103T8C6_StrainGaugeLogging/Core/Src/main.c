@@ -78,10 +78,10 @@ static void MX_ADC1_Init(void);
 CAN_TxHeaderTypeDef TxHeader;
 CAN_RxHeaderTypeDef RxHeader;
 
-uint8_t TxData0[8]; // Frame 1: timeH, timeL, Sensor 1, Sensor 2
-uint8_t TxData1[8]; // Frame 2: timeH, timeL, Sensor 3
+uint8_t TxData0[8]; // Frame 1: Sensor1 [0-1] Sensor2 [2-3] Sensor 3[4-5] Padding[6-7]
 uint32_t TxMailbox;
-
+//CAN
+uint8_t SID = 0x123;
 //Analog Data Log
 float data0;
 float data1;
@@ -96,7 +96,8 @@ void Write_To_SD(uint32_t time, float data0, float data1, float data2) {
 	  f_mount(&fs, "", 0);
 	  f_open(&fil, "DataLog.txt", FA_OPEN_ALWAYS | FA_WRITE | FA_READ);
 	  f_lseek(&fil, fil.fsize);
-	  sprintf(buffer, "time(ms): [%lu], sensor 1(V): [%.2f], sensor 2(V): [%.2f], sensor 3(V): [%.2f]\n", time, data0, data1, data2);
+	  //sprintf(buffer, "time(ms): [%lu], sensor 1(V): [%.2f], sensor 2(V): [%.2f], sensor 3(V): [%.2f]\n", time, data0, data1, data2);
+	  sprintf(buffer, "123,%.2f,%.2f,%.2f,%lu\n", data0, data1, data2, time);
 	  f_puts(buffer, &fil);
 	  f_close(&fil);
 	  HAL_Delay(10);
@@ -140,9 +141,6 @@ float Read_Sensor2(void){
 	return (value * 5.0f) / 4095.0f;
 }
  void Transmit_Data(uint32_t elapsed_time, float data0, float data1, float data2){
-	 //Splitting elapsed time into 2 parts for can data framing
-	 uint16_t time_low = elapsed_time & 0xFFFF; // first 2 bytes
-	 uint16_t time_high = (elapsed_time >> 16) & 0xFFFF; // second 2 bytes
 
 	 // Scaling data values to integer to 2 decimal places
 	 int16_t data_0 = (int16_t)(data0 * 100);
@@ -150,27 +148,16 @@ float Read_Sensor2(void){
 	 int16_t data_2 = (int16_t)(data2 * 100);
 
 	 //TxData0[] First Frame
-	 memcpy(&TxData0[0], &time_low, 2);   // Bytes 0-1: Time low
-	 memcpy(&TxData0[2], &time_high, 2);  // Bytes 2-3: Time high
-	 memcpy(&TxData0[4], &data_0, 2);         // Bytes 4-5: Sensor 1
-	 memcpy(&TxData0[6], &data_1, 2);         // Bytes 6-7: Sensor 2
-	 //TxData1[] Second Frame
-	 memcpy(&TxData1[0], &time_low, 2);   // Bytes 0-1: Time low
-	 memcpy(&TxData1[2], &time_high, 2);  // Bytes 2-3: Time high
-	 memcpy(&TxData1[4], &data_2, 2);         // Bytes 4-5: Sensor 3
-	 TxData1[6] = 0;
-	 TxData1[7] = 0;
+	 memcpy(&TxData0[0], &data_0, 2);   // Bytes 0-1: Time low
+	 memcpy(&TxData0[2], &data_1, 2);   // Bytes 2-3: Time high
+	 memcpy(&TxData0[4], &data_2, 2);   // Bytes 4-5: Sensor 1
+	 TxData0[6] = 0;                  	// Padding
+	 TxData0[7] = 0;					// Padding
 
 	 //Sending First Frame ID: 0x123
 	 TxHeader.StdId = 0x123;
 	 if(HAL_CAN_AddTxMessage(&hcan, &TxHeader, TxData0, &TxMailbox) != HAL_OK){
 		 printf("Can Transmission Failed (frame 1, SID: 0x123\n)");
-	 }
-
-	 //Sending Second Frame ID: 0x124
-	 TxHeader.StdId = 0x124;
-	 if(HAL_CAN_AddTxMessage(&hcan, &TxHeader, TxData1, &TxMailbox) != HAL_OK){
-		 printf("Can Transmission Failed (frame 2, SID: 0x124\n)");
 	 }
 
 	 HAL_Delay(10);

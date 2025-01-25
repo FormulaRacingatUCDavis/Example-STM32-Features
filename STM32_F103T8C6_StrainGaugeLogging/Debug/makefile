@@ -64,8 +64,8 @@ all: main-build
 main-build: STM32_F103T8C6_StrainGaugeLogging.elf secondary-outputs
 
 # Tool invocations
-STM32_F103T8C6_StrainGaugeLogging.elf STM32_F103T8C6_StrainGaugeLogging.map: $(OBJS) $(USER_OBJS) C:\Users\south\Desktop\FRUCD\Project\STM32_F103T8C6_StrainGaugeLogging\STM32F103C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "STM32_F103T8C6_StrainGaugeLogging.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\south\Desktop\FRUCD\Project\STM32_F103T8C6_StrainGaugeLogging\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_F103T8C6_StrainGaugeLogging.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+STM32_F103T8C6_StrainGaugeLogging.elf STM32_F103T8C6_StrainGaugeLogging.map: $(OBJS) $(USER_OBJS) /Users/hxn8637/Documents/GitHub/Example-STM32-Features/STM32_F103T8C6_StrainGaugeLogging/STM32F103C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "STM32_F103T8C6_StrainGaugeLogging.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"/Users/hxn8637/Documents/GitHub/Example-STM32-Features/STM32_F103T8C6_StrainGaugeLogging/STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_F103T8C6_StrainGaugeLogging.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

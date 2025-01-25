@@ -1,0 +1,10 @@
+11:22:39 **** Incremental Build of configuration Debug for project STM32_F103T8C6_StrainGaugeLogging ****
+make -j7 all 
+arm-none-eabi-size  STM32_F103T8C6_StrainGaugeLogging.elf 
+   text	   data	    bss	    dec	    hex	filename
+  50724	    492	  10996	  62212	   f304	STM32_F103T8C6_StrainGaugeLogging.elf
+Finished building: default.size.stdout
+ 
+
+11:22:40 Build Finished. 0 errors, 0 warnings. (took 267ms)
+
