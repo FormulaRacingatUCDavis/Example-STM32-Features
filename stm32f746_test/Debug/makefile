@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (11.3.rel1)
+# Toolchain: GNU Tools for STM32 (12.3.rel1)
 ################################################################################
 
 -include ../makefile.init
@@ -64,8 +64,8 @@ all: main-build
 main-build: stm32f746_test.elf secondary-outputs
 
 # Tool invocations
-stm32f746_test.elf stm32f746_test.map: $(OBJS) $(USER_OBJS) C:\Users\Melody\STM32CubeIDE\workspace_1.13.1\stm32f746_test\STM32F746ZGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "stm32f746_test.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"C:\Users\Melody\STM32CubeIDE\workspace_1.13.1\stm32f746_test\STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f746_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+stm32f746_test.elf stm32f746_test.map: $(OBJS) $(USER_OBJS) /Users/hxn8637/Documents/GitHub/Example-STM32-Features/stm32f746_test/STM32F746ZGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "stm32f746_test.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"/Users/hxn8637/Documents/GitHub/Example-STM32-Features/stm32f746_test/STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f746_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (11.3.rel1)
+# Toolchain: GNU Tools for STM32 (12.3.rel1)
 ################################################################################
 
 -include ../makefile.init
@@ -64,8 +64,8 @@ all: main-build
 main-build: nucleo-f446re-microsd.elf secondary-outputs
 
 # Tool invocations
-nucleo-f446re-microsd.elf nucleo-f446re-microsd.map: $(OBJS) $(USER_OBJS) /Users/jameskimball/STM32CubeIDE/workspace_1.13.2/nucleo-f446re-microsd/STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "nucleo-f446re-microsd.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/Users/jameskimball/STM32CubeIDE/workspace_1.13.2/nucleo-f446re-microsd/STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="nucleo-f446re-microsd.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+nucleo-f446re-microsd.elf nucleo-f446re-microsd.map: $(OBJS) $(USER_OBJS) /Users/hxn8637/Documents/GitHub/Example-STM32-Features/nucleo-f446re-microsd/STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "nucleo-f446re-microsd.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/Users/hxn8637/Documents/GitHub/Example-STM32-Features/nucleo-f446re-microsd/STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="nucleo-f446re-microsd.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

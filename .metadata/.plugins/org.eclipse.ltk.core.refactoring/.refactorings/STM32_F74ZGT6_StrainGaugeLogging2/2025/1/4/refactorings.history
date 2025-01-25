@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;STM32_F74ZGT6_StrainGaugeLogging2/STM32_F103T8C6_StrainGaugeLogging.ioc&apos; to &apos;STM32_F74ZGT6_StrainGaugeLogging.ioc&apos;" description="Rename resource &apos;STM32_F103T8C6_StrainGaugeLogging.ioc&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="STM32_F103T8C6_StrainGaugeLogging.ioc" name="STM32_F74ZGT6_StrainGaugeLogging.ioc" stamp="1737830720806" updateReferences="true"/>
+</session>

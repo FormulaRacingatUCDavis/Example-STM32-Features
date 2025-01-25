@@ -1,0 +1,10 @@
+10:46:38 **** Incremental Build of configuration Debug for project nucleo-f446re-microsd ****
+make -j7 all 
+arm-none-eabi-size  nucleo-f446re-microsd.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28204	     44	  10604	  38852	   97c4	nucleo-f446re-microsd.elf
+Finished building: default.size.stdout
+ 
+
+10:46:39 Build Finished. 0 errors, 0 warnings. (took 124ms)
+
